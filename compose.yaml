@@ -1,1 +1,13 @@
 services:
+  mail-sender:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    container_name: mail-sender-app
+    ports:
+      - "8099:8080"
+    environment:
+      YANDEX_EMAIL: ${YANDEX_EMAIL}
+      YANDEX_PASSWORD: ${YANDEX_PASSWORD}
+    restart: unless-stopped
+
